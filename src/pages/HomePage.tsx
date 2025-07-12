@@ -13,19 +13,29 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(false)
   const [isLoadingLinks, setIsLoadingLinks] = useState(true)
 
+  // Add error logging
+  console.log('HomePage component rendering...')
+
   // Fetch all short links on component mount
   useEffect(() => {
+    console.log('HomePage useEffect - fetching links...')
     fetchShortLinks()
   }, [])
 
   const fetchShortLinks = async () => {
     try {
+      console.log('Fetching short links from Supabase...')
       const { data, error } = await supabase
         .from('short_links')
         .select('*')
         .order('created_at', { ascending: false })
 
-      if (error) throw error
+      if (error) {
+        console.error('Supabase error:', error)
+        throw error
+      }
+      
+      console.log('Fetched links:', data?.length || 0)
       setShortLinks(data || [])
     } catch (error) {
       console.error('Error fetching links:', error)
