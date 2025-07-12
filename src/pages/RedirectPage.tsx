@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { supabase } from '@/lib/supabase'
-import NotFoundPage from './NotFoundPage'
 
 export default function RedirectPage() {
   const { slug } = useParams<{ slug: string }>()
@@ -31,7 +30,7 @@ export default function RedirectPage() {
           .then(() => {
             console.log(`Click count updated for slug: ${slug}`)
           })
-          .catch((error) => {
+          .catch((error: any) => {
             console.error('Failed to update click count:', error)
           })
 

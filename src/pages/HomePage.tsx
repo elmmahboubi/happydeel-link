@@ -73,7 +73,7 @@ export default function HomePage() {
       const newSlug = `p${nextNumber}`
 
       // Insert the new short link
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('short_links')
         .insert({
           slug: newSlug,
