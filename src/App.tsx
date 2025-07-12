@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import RedirectPage from './pages/RedirectPage'
 import NotFoundPage from './pages/NotFoundPage'
-import EnvironmentCheck from './components/EnvironmentCheck'
 import { Toaster } from 'sonner'
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Toaster position="top-right" />
-      <EnvironmentCheck />
     </>
   )
 }

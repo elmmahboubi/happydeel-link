@@ -128,7 +128,8 @@ export default function HomePage() {
   }
 
   const getShortUrl = (slug: string) => {
-    return `${window.location.origin}/${slug}`
+    const baseUrl = import.meta.env.VITE_BASE_URL || window.location.origin
+    return `${baseUrl}/${slug}`
   }
 
   return (
@@ -214,7 +215,7 @@ export default function HomePage() {
                         <TableCell className="font-mono">
                           <div className="flex items-center space-x-2">
                             <span className="text-blue-600 font-medium">
-                              /{link.slug}
+                              {getShortUrl(link.slug)}
                             </span>
                           </div>
                         </TableCell>
